@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>清单</title>
-    <style>
+    <!--<style>
         /* 
             属性选择直接写最里面的属性名、满足属性=值；^以？开头；$以？结尾；*包含的？属性
             父代选择直接写最外面的标签名
@@ -23,50 +23,109 @@
             background-color: aqua;
 
         }
-    </style>
+    </style>-->
 
 </head>
 <body>
-    <!-- 有序列表、一般不用 -->
-    <ol type="a" start="3">
+        <img src="速滑表头.jpg" alt="文件路径出错" width="1000">
+    <p><big>轮滑大类</big></p>
+    <ol type="A" start="1">
         <li>自由式轮滑</li>
         <li>速度轮滑</li>
+        <li>花样轮滑</li>
+        <li>轮滑阻拦</li>
+        <li>单排轮滑球</li>
+        <li>双排轮滑球</li>
+        <li>高山速降</li>
+        <li>滑板</li>
+        <li>滑板车</li>
     </ol>
-    <ul type = "">
-        <li>自由式轮滑</li>
+<hr /> 
+    <ul style="list-style-type:circle"><!--无序列表,可以自定义图片序号-->
         <li>速度轮滑</li>
+        <dt>商业赛事(部分)</dt>
+            <dd>100米计时赛</dd>
+            <dd>200米计时赛</dd>
+            <dd>300米计时赛</dd>
+            <dd>500米计时赛</dd>
+            <dd>1000米计时赛</dd>
+        <dt>场地赛(部分)</dt>
+            <dd>200米双人追逐赛</dd>
+            <dd>500米+D争先赛</dd>
+            <dd>1000米争先赛</dd>
+            <dd>3000米接力赛</dd>
+            <dd>5000米积分/淘汰赛</dd>
+        <dt>公路赛(部分)</dt>
+            <dd>10000米积分赛</dd>
+            <dd>15000米淘汰赛</dd>
+            <dd>42.195km马拉松赛</dd>
+        </dl>
+        <br /> <!--这个空行-->
+        <hr /> <!--这个分割线在ul内部-->
+        <li>自由式轮滑</li>
+            <dl><!--自定义列表dl,以dt,dd分级-->
+            <dt>竞赛项目(大赛)</dt>
+                <ol type="1" start="1"><!--有序列表,可以自定义序号例如1,A,a,罗马数字等-->
+                    <li>单人花式绕桩</li>
+                    <li>双人花式绕桩</li>
+                    <li>花式对抗</li>
+                    <li>花式刹停</li>
+                    <li>速度过桩</li>
+                    <li>平地跳高</li>
+                </ol>
+            </dl>
+            <dt>其他项目(广东/商赛)</dt>
+                <ol type="1" start="1"><!--有序列表,可以自定义序号例如1,A,a,罗马数字等-->
+                    <li>轮滑拉龙</li>
+                    <li>轮滑舞蹈</li>
+                    <li>动作计时赛</li>
+                    <li>30m直线冲刺</li>
+                </ol>
     </ul>
-<dl>
-    <dt>自由式轮滑</dt>
-        <dd>花式绕桩</dd>
-        <dd>速度过桩</dd>
-    <dt>速度轮滑</dt>
-        <dd>100米计时赛</dd>
-        <dd> 200米计时赛</dd>
-</dl>
-<!-- hidden、readonly、disabled -->
-账号：<input type="text" maxlength="12"><br> 
-密码：<input hidden type="password" maxlength="6"><br>
-评论：<input readonly id="pinglun" type="text" maxlength="20"><br>
-
+    <hr /> 
+    <p>表单设置</p>
+    <fieldset><!-- 定义了一组相关的表单元素，并使用外框包含起来 -->
+    <legend>用户登录窗体</legend>
+    <!--form 创建表单-->
+    <form action="/" method="post">
+    <!-- hidden 输入隐藏、readonly 只读不可复制、disabled -->
+    登录账户:<input type="text" id="zhanghu" name="name" required>
+    <br> 
+    登录密码:<input type="password" id="mima" name="password" required>
+    <br> 
+    备 注 : <textarea readonly rows="5" cols="20">我是一个文本框</textarea><!--readonly 文本框内容只读-->
+    <br> </fieldset>
 <!-- 单选框 radio 如果不定义 name 那就每个都可以选择 -->
-性别：男子：<input type="radio" name="1" checked="checked">
-<!-- label for 一个 input id、让标签内容也可以点选 -->
-    <label for="2">女子：</label><input id="2" type="radio" name="1" >
-    <br>
-报名项目：<input type="checkbox" checked="checked">速度轮滑
-<input type="checkbox">自由式轮滑<br>
-
-<!-- 按钮设置 -->
-<input type="button" value="提交报名"><br>
-<button disabled>注册报名</button><br>
-<!-- 下拉菜单 value是实际获取的值、外面是观众看到的值-->
-<select name="" id="">
-    <option value="">自由式轮滑项目</option>
-    <option value="" selected="selected">花式绕桩</option>
-    <option value="">速度过桩</option>
+选手姓名:<input type="text" id="zhanghu" name="name" required>
+<br> 
+性别：<input type="radio" id="nanzi" name="gender" checked>男子<!--checked 默认选择-->
+     <input type="radio" id="nvzi" name="gender" >女子
+<br> 
+手机号:<input type="text" id="zhanghu" name="name" required>
+<br> 
+证件号:<input type="text" id="zhanghu" name="name" required>
+<br> 
+队伍名称:<input type="text" id="zhanghu" name="name" size="30" required>
+<br> 
+<!-- 下拉菜单 value是后台获取的值、外面是用户看到的值-->
+报名大项:<select id="daxiang" name="xiangmu">
+    <option selected disabled hidden style="display: none" value=""></option><!--空白选项-->
+    <option value="">速度轮滑</option>
+    <option value="" selected>自由式轮滑</option><!--selected 默认选择-->
+    <option value="">轮滑舞蹈</option>
     <option value="">轮滑拉龙</option>
-</select>
-
+</select><br> 
+<!-- 单选框 radio 定义 name 才能实现单选 -->
+报名大项：<br>
+<input type="radio" id="suhua" name="xiangmu">速度轮滑
+<input type="radio" id="ziyoushi" name="xiangmu" checked>自由式轮滑<!--checked 默认选择-->
+<br>
+具体项目：<br>
+<input type="checkbox" >100米计时赛<input type="checkbox" checked>200米计时赛<input type="checkbox" >300米计时赛<input type="checkbox" >500米计时赛<br>
+<input type="checkbox" >单人花式绕桩<input type="checkbox" >速度过桩<input type="checkbox" checked>动作计时赛<input type="checkbox" >30m直线冲刺
+<br>
+<!-- 按钮设置 -->
+<input type="button" value="提交报名"><input type="reset" id="chongzhi" name="reset" value="点击重置"><br>
+<button disabled>注册报名</button><br>
 </body>
 </html>
