@@ -1,28 +1,55 @@
+<?php
+$host = 'localhost';
+$username = 'root';
+$password = '19891989';
+$database = 'tantan';
+$connect = mysqli_connect($host, $username, $password, $database);
+//要输出变量需要用双引号""且空格
+echo "<p>数据库$database 连接成功</p>";
+// 设置编码，防止中文乱码
+// mysqli_query($connect , "set names utf8");
+////////////////////////////////////////////////////////////////////////////////////////////////////
+// if (isset($_POST['saicheng'])){
+//     $id = $_POST['saicheng'];
+//     echo "你要查询的选手是: $id <br>";
+//     $sql = "SELECT * FROM saicheng";
+// }
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form action="./10赛程表ph.php" method="post">
-        <button type="submit" name="name" value="saicheng">赛程表</button>
-    </form>
+////////////////////////////////////////////////////////////////////////////////////////////////////
+//mysqli_select_db( $connect, 'tantan' );
+$sql = "SELECT * FROM saicheng";
+$result = mysqli_query( $connect, $sql );
+echo '<h1 align="center">谭谭系统测试1.0</h1>';
+echo '<p align="center"><img align="center" src="表头.jpg" alt="文件路径出错" width="800"></p>';
 
-    <form action="./10赛程表ph.php" method="post">
-        <input type="image" name="name" value="saicheng" src="./表头.jpg" width="1000px"></input>
-    </form>
+echo '<table border="1" cellpadding="5" cellspacing="0" align="center" >
+<th>日期</th><th>单元</th><th>时间</th><th>场次</th>
+<th>项目</th><th>组别</th><th>赛次</th><th>人数</th>
+<th>组数</th><th>晋级</th><th>备注</th>
+</tr>';
+while($row = mysqli_fetch_array($result, MYSQLI_NUM))
+{
+    echo "<tr>".
+        //"<td align='center'> {$row[0]}</td> ".
+        "<td align='left'>{$row[1]} </td> ".
+        "<td align='left'>{$row[2]} </td> ".
+        "<td align='center'>{$row[3]} </td> ".
+        "<td align='center'>{$row[4]} </td> ".
+        "<td align='center'>{$row[5]} </td> ".
+        "<td align='center'>{$row[6]} </td> ".
+        "<td align='center'>{$row[7]} </td> ".
+        "<td align='center'>{$row[8]} </td> ".
+        "<td align='center'>{$row[9]} </td> ".
+        "<td align='center'{$row[10]} </td> ".
+        "<td align='center'>{$row[11]} </td> ".
+        "</tr>";
+}
+echo '</table>';
 
-    <form action="./10赛程表ph.php" method="post">
-        <input type="button" name="name" value="saicheng">递交</input>
-    </form>
+// 获取查询结果行数
+$num_rows = mysqli_num_rows($result);
+echo '<br>查询数据 ' . $num_rows . ' 条<br>';
 
-    <form name="form" action="./10赛程表ph.php" method="post">
-        <a href="javascript:form.submit();" value="saicheng" name="name">提交</a> 
-    </form>
-    <p id="tag"></p>
-
-</body>
-</html>
+// 关闭数据库连接
+mysqli_close($connect);
+?>
