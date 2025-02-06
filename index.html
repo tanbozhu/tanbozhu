@@ -1,54 +1,61 @@
 <?php
-$host = 'localhost';
-$username = 'root';
+$host = '8.134.255.188';
+$username = 'tantan';
 $password = '19891989';
 $database = 'tantan';
 $connect = mysqli_connect($host, $username, $password, $database);
 //要输出变量需要用双引号""且空格
 echo "<p>数据库$database 连接成功</p>";
 // 设置编码，防止中文乱码
-// mysqli_query($connect , "set names utf8");
+mysqli_query($connect , "set names utf8");
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-// if (isset($_POST['saicheng'])){
-//     $id = $_POST['saicheng'];
+// if (isset($_POST['name'])){
+//     $id = $_POST['name'];
 //     echo "你要查询的选手是: $id <br>";
-//     $sql = "SELECT * FROM saicheng";
+//     $sql = "SELECT * FROM huizong WHERE name = '$id'";
 // }
-
+// if (isset($_POST['leader'])){
+//     $id = $_POST['leader'];
+//     echo "你要查询的领队是: $id <br>";
+//     $sql = "SELECT * FROM huizong WHERE leader = '$id'";
+// }
+// if (isset($_POST['duiwu'])){
+//     $id = $_POST['duiwu'];
+//     echo "你要查询的队伍是: $id <br>";
+//     $sql = "SELECT * FROM huizong WHERE duiwu = '$id'";
+// }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-//mysqli_select_db( $connect, 'tantan' );
-$sql = "SELECT * FROM saicheng";
+$sql = "SELECT * FROM huizong WHERE duiwu = '广东81轮滑星光队'";
 $result = mysqli_query( $connect, $sql );
 echo '<h1 align="center">谭谭系统测试1.0</h1>';
 echo '<p align="center"><img align="center" src="表头.jpg" alt="文件路径出错" width="800"></p>';
-
-echo '<table border="1" cellpadding="5" cellspacing="0" align="center" >
-<th>日期</th><th>单元</th><th>时间</th><th>场次</th>
-<th>项目</th><th>组别</th><th>赛次</th><th>人数</th>
-<th>组数</th><th>晋级</th><th>备注</th>
-</tr>';
+echo '<h4 align="center">参赛信息确认单 Entry Confirmation Letter</h4>';
+echo '<h4>尊敬的</h4>';
+echo '<b>领队:</b>';
+echo '<b align="center">教练:</b>';
+echo '<h6 align="center">您好！感谢贵单位及运动员参加本场赛事，以下信息为贵单位需核对的报道内容，请报道人员认真核实，并在报道时签字确认！</h6>';
+echo '<table border="1" align="center"><tr><td>序号</td><td>号码牌</td><td>姓名</td><td>队伍</td><td>领队</td>
+<td>手机</td><td>生日</td><td>组别</td><td>项目一</td><td>项目二</td></tr>';
 while($row = mysqli_fetch_array($result, MYSQLI_NUM))
 {
-    echo "<tr>".
-        //"<td align='center'> {$row[0]}</td> ".
-        "<td align='left'>{$row[1]} </td> ".
-        "<td align='left'>{$row[2]} </td> ".
-        "<td align='center'>{$row[3]} </td> ".
-        "<td align='center'>{$row[4]} </td> ".
-        "<td align='center'>{$row[5]} </td> ".
-        "<td align='center'>{$row[6]} </td> ".
-        "<td align='center'>{$row[7]} </td> ".
-        "<td align='center'>{$row[8]} </td> ".
-        "<td align='center'>{$row[9]} </td> ".
-        "<td align='center'{$row[10]} </td> ".
-        "<td align='center'>{$row[11]} </td> ".
+    echo "<tr><td> {$row[0]}</td> ".
+        "<td>{$row[1]} </td> ".
+        "<td>{$row[2]} </td> ".
+        "<td>{$row[3]} </td> ".
+        "<td>{$row[4]} </td> ".
+        "<td>{$row[5]} </td> ".
+//        "<td>{$row[6]} </td> ".
+        "<td>{$row[7]} </td> ".
+        "<td>{$row[8]} </td> ".
+        "<td>{$row[9]} </td> ".
+        "<td>{$row[10]} </td> ".
         "</tr>";
 }
 echo '</table>';
 
 // 获取查询结果行数
 $num_rows = mysqli_num_rows($result);
-echo '<br>查询数据 ' . $num_rows . ' 条<br>';
+echo '<br>查询结果:您的队伍共报名参赛 ' . $num_rows . ' 人<br>';
 
 // 关闭数据库连接
 mysqli_close($connect);
